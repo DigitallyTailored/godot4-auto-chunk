@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bru1rbopwakeh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1s50"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptag6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="(0, 0, 1)" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+metadata/chunk_node = true
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70821, 1, 2.84877)
+mesh = SubResource("BoxMesh_x1s50")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171488, 0, 2.45272)
+mesh = SubResource("BoxMesh_x1s50")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73718, 1, 2.84877)
+mesh = SubResource("BoxMesh_x1s50")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171488, 0, 2.45272)
+mesh = SubResource("BoxMesh_x1s50")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")

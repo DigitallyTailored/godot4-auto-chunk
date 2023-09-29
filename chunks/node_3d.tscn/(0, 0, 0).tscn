@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0cxdrq8mfvdt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_41bla"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrlbx"]
+albedo_color = Color(0, 1, 0.521569, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d2xkr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0a1g"]
+albedo_color = Color(0.266667, 1, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_gmehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkh37"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="(0, 0, 0)" type="Node3D"]
+metadata/chunk_node = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.562176, 0.788142, -0.250582, 0.814115, 0.580703, -1.67083e-08, 0.145514, -0.204003, -0.968095, 5.17654, 0, 4)
+mesh = SubResource("CylinderMesh_41bla")
+surface_material_override/0 = SubResource("StandardMaterial3D_jrlbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0358256, -0.0502253, 0.998095, 0.814115, 0.580703, -1.67083e-08, -0.579597, 0.812565, 0.0616933, 4, 0, 2.13149)
+mesh = SubResource("CylinderMesh_d2xkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_r0a1g")
+
+[node name="@MeshInstance3D@110387" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50016, 0, 6.27128)
+mesh = SubResource("PrismMesh_gmehf")
+surface_material_override/0 = SubResource("StandardMaterial3D_rkh37")
