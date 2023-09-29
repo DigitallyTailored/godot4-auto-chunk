@@ -1,10 +1,14 @@
 # Godot 4 Chunk handling Tool Script
 
-This is a tool script for Godot 4 that manages chunk loading and unloading based on the camera's position. It is useful for games with large open worlds, where loading the entire map at once is not feasible. The script dynamically loads and unloads chunks of the game world around the camera to maintain performance.
+This is a tool script for Godot 4 that manages chunk loading and unloading based on the camera's position. It is useful for games with large open worlds, where loading the entire map at once is not feasible. The script runs from the editor to dynamically update chunk scenes with placed and moved nodes while loading and unloding chunks of the game world around the camera to maintain performance both in game and while editing.
+
+![image](https://github.com/DigitallyTailored/godot4-auto-chunk/assets/13086157/57ce58f6-ce36-401a-bc25-8c9545768c7d)
+
+https://github.com/DigitallyTailored/godot4-auto-chunk/assets/13086157/de8e03b4-6dc7-435b-9ed9-3544c253db7b
 
 ## How it Works
 
-The script divides the game world into chunks of a specified size and keeps track of the current chunk that the camera is in. When the camera moves to a new chunk, the script unloads chunks that are now out of range and loads new chunks that have come into range. You can place or move around any nodes that extend Node3D and they will be automatically saved to the correct chunk scene when the chunks refresh.
+The script divides the game world into chunks of a specified size and keeps track of the current chunk that the camera is in. When the camera moves to a new chunk, the script unloads chunks that are now out of range and loads new chunks that have come into range. You can place or move around any nodes that extend Node3D and if they are under the primary node that this script is attached to then they will be automatically saved to the correct chunk scene when the chunks refresh. Any chunks that are empty are not saved.
 
 ## Key Variables
 
@@ -15,7 +19,7 @@ The script divides the game world into chunks of a specified size and keeps trac
 
 1. Attach the script to a Node in your scene.
 2. Set the `chunk_size` and `chunk_range` variables to suit your game.
-3. Add Node3D types under this node such as MeshInstance3D or StaticBody3D
+3. Add Node3D type nodes under this node such as MeshInstance3D or StaticBody3D.
 4. The script will automatically start managing chunks in the editor and when the game runs.
 
 ## Functions
@@ -40,5 +44,7 @@ This script requires Godot 4.0 or later. It assumes that the camera is a child o
 ## Todo
 
 - Move loading and unloading on chunks to a thread to prevent noticeable stutter
-- Hook into Node3D transform update to call chunk placement logic on only required node. We currently do this for all chunks every time we save.
+- chunk scene file names should include the path
+- Hook into Node3D transform update to call chunk placement logic on only required node. We currently do this for all nodes every time we save
 - Create a small demo
+- The way we get the camera is a little hacky
