@@ -39,7 +39,7 @@ The script includes several functions for managing chunks:
 
 ## Notes
 
-This script requires Godot 4.0 or later. It assumes that the camera is a child of the root node and that its name contains "Camera". It also assumes that chunks are saved as `.tscn` files in a `chunks` directory under the root of the project.
+This script requires Godot 4.1 or later. It assumes that the camera is a child of the root node and that its name contains "Camera". It also assumes that chunks are saved as `.tscn` files in a `chunks` directory under the root of the project.
 
 ## Todo
 

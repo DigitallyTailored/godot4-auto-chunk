@@ -1,8 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://mi8q3qegw5qc"]
+[gd_scene load_steps=23 format=3 uid="uid://mi8q3qegw5qc"]
 
 [ext_resource type="Script" path="res://Chunker.gd" id="1_7c2fl"]
 [ext_resource type="Texture2D" uid="uid://csayjm12qutk0" path="res://noise_texture_albedo.tres" id="2_e4dfd"]
 [ext_resource type="Texture2D" uid="uid://c5qpvniedkdue" path="res://noise_texture_height.tres" id="3_5kxst"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wn4p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjje7"]
+albedo_color = Color(0.411765, 0, 0.666667, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_gmehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkh37"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qi6yu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka7f"]
+albedo_color = Color(1, 0.592157, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_41bla"]
 
@@ -18,26 +33,6 @@ albedo_color = Color(0.266667, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptag6"]
 albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2wn4p"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjje7"]
-albedo_color = Color(0.411765, 0, 0.666667, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2273c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ee461"]
-albedo_color = Color(0, 0.905882, 1, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_gmehf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkh37"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qi6yu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka7f"]
-albedo_color = Color(1, 0.592157, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hqp1l"]
 subdivide_width = 100
@@ -110,6 +105,33 @@ fog_sky_affect = 0.0
 [node name="Chunks" type="Node" parent="."]
 script = ExtResource("1_7c2fl")
 
+[node name="(1, 0, 0)" type="Node3D" parent="Chunks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+metadata/chunk_node = true
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Chunks/(1, 0, 0)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16621, 1, 1.76946)
+mesh = SubResource("BoxMesh_2wn4p")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjje7")
+
+[node name="(2, 0, 0)" type="Node3D" parent="Chunks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+metadata/chunk_node = true
+
+[node name="@MeshInstance3D@110387" type="MeshInstance3D" parent="Chunks/(2, 0, 0)"]
+transform = Transform3D(2.61, 0, 0, 0, 2.61, 0, 0, 0, 2.61, 2.47151, 0, 6.27128)
+mesh = SubResource("PrismMesh_gmehf")
+surface_material_override/0 = SubResource("StandardMaterial3D_rkh37")
+
+[node name="(2, 0, 1)" type="Node3D" parent="Chunks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+metadata/chunk_node = true
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Chunks/(2, 0, 1)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5646, 1, 5.38872)
+mesh = SubResource("BoxMesh_qi6yu")
+surface_material_override/0 = SubResource("StandardMaterial3D_rka7f")
+
 [node name="(0, 0, 0)" type="Node3D" parent="Chunks"]
 metadata/chunk_node = true
 
@@ -148,48 +170,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171488, 0, 2.45272)
 mesh = SubResource("BoxMesh_x1s50")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")
-
-[node name="(1, 0, 0)" type="Node3D" parent="Chunks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-metadata/chunk_node = true
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Chunks/(1, 0, 0)"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16621, 1, 1.76946)
-mesh = SubResource("BoxMesh_2wn4p")
-surface_material_override/0 = SubResource("StandardMaterial3D_mjje7")
-
-[node name="(1, 0, 2)" type="Node3D" parent="Chunks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
-metadata/chunk_node = true
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Chunks/(1, 0, 2)"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61963, 1, 2.13481)
-mesh = SubResource("BoxMesh_2273c")
-surface_material_override/0 = SubResource("StandardMaterial3D_ee461")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Chunks/(1, 0, 2)/MeshInstance3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171488, 0, 2.45272)
-mesh = SubResource("BoxMesh_2273c")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ee461")
-
-[node name="(2, 0, 0)" type="Node3D" parent="Chunks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
-metadata/chunk_node = true
-
-[node name="@MeshInstance3D@110387" type="MeshInstance3D" parent="Chunks/(2, 0, 0)"]
-transform = Transform3D(2.61, 0, 0, 0, 2.61, 0, 0, 0, 2.61, 2.47151, 0, 6.27128)
-mesh = SubResource("PrismMesh_gmehf")
-surface_material_override/0 = SubResource("StandardMaterial3D_rkh37")
-
-[node name="(2, 0, 1)" type="Node3D" parent="Chunks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
-metadata/chunk_node = true
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Chunks/(2, 0, 1)"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5646, 1, 5.38872)
-mesh = SubResource("BoxMesh_qi6yu")
-surface_material_override/0 = SubResource("StandardMaterial3D_rka7f")
 
 [node name="floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 2.60269, -2.13174, -3.54112)

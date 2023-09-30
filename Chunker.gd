@@ -1,6 +1,6 @@
 @tool
 extends Node
-
+@export_flags("Yes") var save_on_unload = 1
 @export var chunk_size = 8 #do not change this after any chunks have been saved
 @export var chunk_range = 1 #can change this whenever
 var camera_position_current = Vector3.ZERO
@@ -70,7 +70,7 @@ func unload_distant_chunks(chunk_position:Vector3):
 		var chunk:Vector3 = chunks_loaded[chunk_str]
 		var diff = chunk_position - chunk
 		if abs(diff.x) > chunk_range or abs(diff.y) > chunk_range or abs(diff.z) > chunk_range:
-			unload_chunk(chunk)
+			unload_chunk(chunk, save_on_unload)
 			chunks_to_unload.append(chunk_str)
 	for chunk_str in chunks_to_unload:
 		chunks_loaded.erase(chunk_str)
