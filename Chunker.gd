@@ -10,6 +10,18 @@ var scene_name
 var chunk_scene_path
 
 var chunks_loaded = {}
+var method_timers = {}
+
+func time_start(method_name):
+	method_timers[method_name] = Time.get_ticks_msec()
+
+func time_end(method_name):
+	if method_name in method_timers:
+		var elapsed_time = Time.get_ticks_msec() - method_timers[method_name]
+		print("Time taken for " + method_name + ": " + str(elapsed_time) + " ms.")
+		method_timers.erase(method_name)
+	else:
+		print("Error: timer for method " + method_name + " not started.")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -87,18 +99,21 @@ func load_chunk(chunk_position, force = false):
 			node_new.position = chunk_position * chunk_size
 			node_new.set_meta("chunk_node", true)
 
-func unload_chunk(chunk_position):
+func unload_chunk(chunk_position, save = true):
 	var chunk_name = str(chunk_position)+'.tscn'
-	if FileAccess.file_exists(chunk_scene_path+chunk_name):
-		DirAccess.remove_absolute(chunk_scene_path+chunk_name)
 	var expired_chunk = self.find_child(str(chunk_position))
+	if save:
+		if FileAccess.file_exists(chunk_scene_path+chunk_name):
+			DirAccess.remove_absolute(chunk_scene_path+chunk_name)
+			
 	if expired_chunk:
-		if expired_chunk.get_child_count() > 0:
-			var chunk_scene = PackedScene.new()
-			recursive_set_owner(expired_chunk, expired_chunk)
-			var result = chunk_scene.pack(expired_chunk)
-			if result == OK:
-				ResourceSaver.save(chunk_scene, chunk_scene_path+chunk_name)
+		if save:
+			if expired_chunk.get_child_count() > 0:
+				var chunk_scene = PackedScene.new()
+				recursive_set_owner(expired_chunk, expired_chunk)
+				var result = chunk_scene.pack(expired_chunk)
+				if result == OK:
+					ResourceSaver.save(chunk_scene, chunk_scene_path+chunk_name)
 		expired_chunk.get_parent().remove_child(expired_chunk)
 		expired_chunk.queue_free()
 		
