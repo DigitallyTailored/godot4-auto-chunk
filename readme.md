@@ -43,7 +43,7 @@ This script requires Godot 4.0 or later. It assumes that the camera is a child o
 
 ## Todo
 
-- Move loading and unloading on chunks to a thread to prevent noticeable stutter
+- Move loading and unloading(saving) of chunks to a thread to prevent noticeable stutter
 - chunk scene file names should include the path
 - Hook into Node3D transform update to call chunk placement logic on only required node. We currently do this for all nodes every time we save
 - Create a small demo
