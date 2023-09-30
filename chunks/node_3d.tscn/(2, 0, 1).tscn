@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj7mgyu26273s"]
+[gd_scene load_steps=3 format=3 uid="uid://d0rf7s6gec6p4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qi6yu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka7f"]
 albedo_color = Color(1, 0.592157, 0, 1)
 
-[node name="(1, 0, 1)" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+[node name="(2, 0, 1)" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
 metadata/chunk_node = true
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56975, 1, 5.38872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5646, 1, 5.38872)
 mesh = SubResource("BoxMesh_qi6yu")
 surface_material_override/0 = SubResource("StandardMaterial3D_rka7f")

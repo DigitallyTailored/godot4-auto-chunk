@@ -64,7 +64,7 @@ func unload_distant_chunks(chunk_position:Vector3):
 		chunks_loaded.erase(chunk_str)
 
 	
-func load_chunk(chunk_position):
+func load_chunk(chunk_position, force = false):
 	#print('Loading chunk', chunk_position)
 	var chunk_name = str(chunk_position)+'.tscn'
 	if FileAccess.file_exists(chunk_scene_path+chunk_name):
@@ -79,12 +79,13 @@ func load_chunk(chunk_position):
 		node_new.position = chunk_position * chunk_size
 		node_new.set_meta("chunk_node", true)
 	else:
-		var node_new = Node3D.new()
-		node_new.name = str(chunk_position)
-		self.add_child(node_new)
-		node_new.owner = get_tree().get_edited_scene_root()
-		node_new.position = chunk_position * chunk_size
-		node_new.set_meta("chunk_node", true)
+		if force:
+			var node_new = Node3D.new()
+			node_new.name = str(chunk_position)
+			self.add_child(node_new)
+			node_new.owner = get_tree().get_edited_scene_root()
+			node_new.position = chunk_position * chunk_size
+			node_new.set_meta("chunk_node", true)
 
 func unload_chunk(chunk_position):
 	var chunk_name = str(chunk_position)+'.tscn'
@@ -132,7 +133,7 @@ func reassign_node_to_closest_chunk(node):
 	if rechunk:
 		var new_parent = self.find_child(str(node_chunk_position))
 		if !new_parent:
-			load_chunk(node_chunk_position)
+			load_chunk(node_chunk_position, true)
 			chunks_loaded[str(node_chunk_position)] = node_chunk_position
 			new_parent = self.find_child(str(node_chunk_position))
 		node.reparent(new_parent, true)

@@ -10,7 +10,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 metadata/chunk_node = true
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70821, 1, 2.84877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60471, 1, 2.83819)
 mesh = SubResource("BoxMesh_x1s50")
 surface_material_override/0 = SubResource("StandardMaterial3D_ptag6")
 

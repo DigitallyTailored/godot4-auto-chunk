@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://con3qebbxx6hj"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_gmehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkh37"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="(2, 0, 0)" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+metadata/chunk_node = true
+
+[node name="@MeshInstance3D@110387" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.61, 0, 0, 0, 2.61, 0, 0, 0, 2.61, 2.47151, 0, 6.27128)
+mesh = SubResource("PrismMesh_gmehf")
+surface_material_override/0 = SubResource("StandardMaterial3D_rkh37")
